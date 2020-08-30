@@ -3,13 +3,33 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { EquationComponent } from './features/equation/equation.component';
+import { GoogleMapComponent } from './features/google-map/google-map.component';
+import { LineBotComponent } from './features/line-bot/line-bot.component';
+import { MyCvComponent } from './features/my-cv/my-cv.component';
+import { NumberSeriesComponent } from './features/number-series/number-series.component';
+
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    FooterComponent,
+    EquationComponent,
+    GoogleMapComponent,
+    LineBotComponent,
+    MyCvComponent,
+    NumberSeriesComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule
   ],
   providers: [],

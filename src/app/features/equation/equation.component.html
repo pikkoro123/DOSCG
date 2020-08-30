@@ -1,0 +1,96 @@
+<form [formGroup]="indexsForm" (ngSubmit)="submit()">
+  <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <h3>Series => X, Y, 5, 9, 15, 23, Z</h3>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-4 mb-3">
+      <label for="indexX">Index X: </label>
+      <input formControlName="indexX" type="text" class="form-control" id="indexX" placeholder="Index X" required>
+      <div *ngIf="f.indexX.touched && f.indexX.invalid" class="alert alert-danger">
+        <div *ngIf="f.indexX.errors">Index X is incorrected.</div>
+        <!-- <div *ngIf="f.indexX.errors.required">Index X is required.</div> -->
+        <!-- <div *ngIf="f.indexX.errors.minlength"></div> -->
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <label for="indexY">Index Y: </label>
+      <input formControlName="indexY" type="text" class="form-control" id="indexY" placeholder="Index Y" required>
+      <div *ngIf="f.indexY.touched && f.indexY.invalid" class="alert alert-danger">
+        <div *ngIf="f.indexY.errors">Index Y is incorrected.</div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <label for="indexZ">Index Z: </label>
+      <input formControlName="indexZ" type="text" class="form-control" id="indexZ" placeholder="Index Z" required>
+      <div *ngIf="f.indexZ.touched && f.indexZ.invalid" class="alert alert-danger">
+        <div *ngIf="f.indexZ.errors">Index Z is incorrected.</div>
+        <!-- <div *ngIf="f.indexX.errors.required">Index X is required.</div> -->
+        <!-- <div *ngIf="f.indexX.errors.minlength"></div> -->
+      </div>
+    </div>
+
+    <!-- <div class="col-md-4 mb-3">
+      <label for="validationCustomUsername">Username</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroupPrepend">@</span>
+        </div>
+        <input type="text" class="form-control" id="validationCustomUsername" placeholder="Username" aria-describedby="inputGroupPrepend" required>
+        <div class="invalid-feedback">
+          Please choose a username.
+        </div>
+      </div>
+    </div> -->
+  </div>
+  <!-- <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="validationCustom03">City</label>
+      <input type="text" class="form-control" id="validationCustom03" placeholder="City" required>
+      <div class="invalid-feedback">
+        Please provide a valid city.
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="validationCustom04">State</label>
+      <input type="text" class="form-control" id="validationCustom04" placeholder="State" required>
+      <div class="invalid-feedback">
+        Please provide a valid state.
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="validationCustom05">Zip</label>
+      <input type="text" class="form-control" id="validationCustom05" placeholder="Zip" required>
+      <div class="invalid-feedback">
+        Please provide a valid zip.
+      </div>
+    </div>
+  </div> -->
+  <!-- <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+      <label class="form-check-label" for="invalidCheck">
+        Agree to terms and conditions
+      </label>
+      <div class="invalid-feedback">
+        You must agree before submitting.
+      </div>
+    </div>
+  </div> -->
+  <button class="btn btn-primary" type="submit">Calculate</button>
+
+  <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="nothing"></label>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="validationCustom03">Output => X = ....</label>
+    </div>
+  </div>
+</form>
