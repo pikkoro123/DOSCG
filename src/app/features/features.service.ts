@@ -15,11 +15,16 @@ export class FeaturesService {
   // TODO: getValueNumberSeriesIndexs
   getValueNumberSeriesIndexs(xIndex: string, yIndex: string, zIndex: string) {
     const queryParams = `?index=[${xIndex},${yIndex},${zIndex}]`;
-    return this.http.get<{x: string, y: string, z: string}>(
+    return this.http.get<{ message: string; results: any }>(
       BACKEND_URL + '/series' + queryParams
     );
   }
   // TODO: getValueFromEquation
-
+  getValueFromEquation(A: string) {
+    const queryParams = `?a=${A}`;
+    return this.http.get<{ message: string; results: any }>(
+      BACKEND_URL + '/equation' + queryParams
+    );
+  }
   // TODO: getIsActiveLineBot
 }

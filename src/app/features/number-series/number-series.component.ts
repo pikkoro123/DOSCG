@@ -18,7 +18,7 @@ export class NumberSeriesComponent implements OnInit {
   valueX = '0';
   valueY = '0';
   valueZ = '0';
-
+  results = 'Output => X = , Y = , Z = ';
   indexsForm = new FormGroup({
     indexX: new FormControl(this.indexX, [
       Validators.required,
@@ -33,6 +33,18 @@ export class NumberSeriesComponent implements OnInit {
   constructor(public featuresService: FeaturesService) { }
 
   ngOnInit(): void {
+    // TODO: ใส่ Listener
+    this.featuresService.getValueNumberSeriesIndexs(
+      this.indexsForm.value.indexX,
+      this.indexsForm.value.indexY,
+      this.indexsForm.value.indexZ
+    ).subscribe(resultValues => {
+      // console.log('result..');
+      this.valueX = resultValues.results.x;
+      this.valueY = resultValues.results.y;
+      this.valueZ = resultValues.results.z;
+      // console.log(this.results);
+    });
   }
 
   get f() {
@@ -52,7 +64,11 @@ export class NumberSeriesComponent implements OnInit {
     ).subscribe(resultValues => {
       // this.valueX = "0";
       console.log('result..');
-      console.log(resultValues);
+      // console.log(resultValues['results']['x'] +);
+      this.valueX = resultValues.results.x;
+      this.valueY = resultValues.results.y;
+      this.valueZ = resultValues.results.z;
+      console.log(this.results);
     });
 
   }

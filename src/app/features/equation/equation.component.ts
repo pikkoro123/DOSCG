@@ -11,48 +11,46 @@ import { Subscription } from 'rxjs';
 })
 export class EquationComponent implements OnInit {
 
-  indexX = '0';
-  indexY = '1';
-  indexZ = '6';
+  A = 21;
+  B = 0;
+  C = 0;
 
-  valueX = '0';
-  valueY = '0';
-  valueZ = '0';
-
-  indexsForm = new FormGroup({
-    indexX: new FormControl(this.indexX, [
+  form = new FormGroup({
+    valueA: new FormControl(this.A, [
       Validators.required,
       Validators.pattern('^[0-9]*$')
-      // Validators.minLength(4),
-      // forbiddenNameValidator(/bob/i) // <-- Here's how you pass in the custom validator.
-    ]),
-    indexY: new FormControl(this.indexY, [Validators.required, Validators.pattern('^[0-9]*$')]),
-    indexZ: new FormControl(this.indexZ, [Validators.required, Validators.pattern('^[0-9]*$')])
+    ])
   });
 
   constructor(public featuresService: FeaturesService) { }
 
   ngOnInit(): void {
+    // TODO: ใส่ Listener
+    this.featuresService.getValueFromEquation(
+      this.form.value.valueA
+    ).subscribe(resultValues => {
+      this.A = resultValues.results.A;
+      this.B = resultValues.results.B;
+      this.C = resultValues.results.C;
+    });
   }
 
   get f() {
-    return this.indexsForm.controls;
+    return this.form.controls;
   }
 
   submit(): void {
     console.log('submit...');
-    if (this.indexsForm.invalid) {
+    if (this.form.invalid) {
       return;
     }
 
-    this.featuresService.getValueNumberSeriesIndexs(
-      this.indexsForm.value.indexX,
-      this.indexsForm.value.indexY,
-      this.indexsForm.value.indexZ
+    this.featuresService.getValueFromEquation(
+      this.form.value.valueA
     ).subscribe(resultValues => {
-      // this.valueX = "0";
-      console.log('result..');
-      console.log(resultValues);
+      this.A = resultValues.results.A;
+      this.B = resultValues.results.B;
+      this.C = resultValues.results.C;
     });
 
   }
