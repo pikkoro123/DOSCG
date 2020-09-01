@@ -13,7 +13,8 @@ export class GoogleMapComponent implements OnInit, AfterViewInit {
 
   fromPlace: string = 'MRT บางซื่อ ประตู 2 บริษัทปูนซีเมนต์ไทย';
   toPlace: string = 'Central World, Centara Grand and Bangkok Convention Centre, Rama I Road, Pathum Wan, Pathum Wan District, Bangkok';
-  travel = 'DRIVING';
+  travel: string;
+  
   travels = [
     'DRIVING',
     'BICYCLING',
@@ -56,20 +57,37 @@ export class GoogleMapComponent implements OnInit, AfterViewInit {
   directionsService = new google.maps.DirectionsService();
   directionsDisplay = new google.maps.DirectionsRenderer();
 
-  form = new FormGroup({
-    fromPlace: new FormControl(this.fromPlace, [
-      Validators.required
-    ]),
-    toPlace: new FormControl(this.toPlace, [
-      Validators.required
-    ]),
-    travel: new FormControl(this.travel, [
-      Validators.required
-    ])
-  });
+  form = new FormGroup({});
 
   ngOnInit(): void {
+    console.log('ngOnInit...');
+    this.getInterpretations();
+    this.form = new FormGroup({
+      fromPlace: new FormControl(this.fromPlace, [
+        Validators.required
+      ]),
+      toPlace: new FormControl(this.toPlace, [
+        Validators.required
+      ]),
+      travel: new FormControl(this.travel, [
+        Validators.required
+      ])
+    });
+  }
 
+  getInterpretations() {
+    console.log('getInterpretations...');
+    if(localStorage.getItem('travel') === null) {
+      localStorage.setItem('travel', 'DRIVING');
+      this.travel = localStorage.getItem('travel');
+    } else {
+      this.travel = localStorage.getItem('travel');
+    }
+  }
+
+  setInterpretations(travel) {
+    localStorage.setItem('travel', travel);
+    this.travel = localStorage.getItem('travel');
   }
 
   get f() {
@@ -111,6 +129,7 @@ export class GoogleMapComponent implements OnInit, AfterViewInit {
   }
 
   getTypeTravel(travel: string) {
+    this.setInterpretations(travel);
     switch (travel) {
       case 'DRIVING': {
         return google.maps.TravelMode.DRIVING;
@@ -139,8 +158,9 @@ export class GoogleMapComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    console.log('ngAfterViewInit...');
     this.mapInitializer();
-    // this.marker.setMap(this.map);
+   
     this.calculateAndDisplayRoute(this.fromPlace, this.toPlace, this.travel);
     this.directionsDisplay.setMap(this.map);
   }
