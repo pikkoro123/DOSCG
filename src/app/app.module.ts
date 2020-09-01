@@ -13,6 +13,8 @@ import { NumberSeriesComponent } from './features/number-series/number-series.co
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { GoogleMapsModule } from '@angular/google-maps';
+import { ParticlesModule } from 'angular-particle';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    GoogleMapsModule,
+    ParticlesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

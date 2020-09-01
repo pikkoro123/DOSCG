@@ -26,5 +26,13 @@ export class FeaturesService {
       BACKEND_URL + '/equation' + queryParams
     );
   }
+
+
   // TODO: getIsActiveLineBot
+  getIsActiveLineBot() {
+    return this.http.get<{ message: string; results: any }>(
+      'https://linebot-pikkoro.herokuapp.com'
+    );
+  }
+  // https://linebot-pikkoro.herokuapp.com/
 }

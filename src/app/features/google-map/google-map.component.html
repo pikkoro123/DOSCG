@@ -1,1 +1,43 @@
-<p>google-map works!</p>
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div class="form-row">
+    <!-- <div class="col-md-6 mb-3">
+      <h3>Equation A : ?, B = 23 - A, C = -21 - A</h3>
+    </div> -->
+  </div>
+  <div class="form-row">
+    <div class="col-md-4 mb-3">
+      <label for="fromPlace">Starting point : </label>
+      <input formControlName="fromPlace" type="text" class="form-control" id="fromPlace" placeholder="Starting point" disabled required>
+      <div *ngIf="f.fromPlace.touched && f.fromPlace.invalid" class="alert alert-danger">
+        <div *ngIf="f.fromPlace.errors">Starting point is incorrected.</div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <label for="toPlace">Destination : </label>
+      <input formControlName="toPlace" type="text" class="form-control" id="toPlace" placeholder="Destination" disabled required>
+      <div *ngIf="f.toPlace.touched && f.toPlace.invalid" class="alert alert-danger">
+        <div *ngIf="f.toPlace.errors">Destination is incorrected.</div>
+      </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+      <label for="toPlace">Destination : </label>
+
+      <select class="browser-default custom-select" formControlName="travel">
+        <option *ngFor="let travel of travels" [value]="travel">{{travel}}
+        </option>
+     </select>
+
+      <div *ngIf="f.toPlace.touched && f.toPlace.invalid" class="alert alert-danger">
+        <div *ngIf="f.toPlace.errors">Destination is incorrected.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <button class="btn btn-primary" type="submit">Search</button>
+</form>
+
+
+<div #mapContainer id="map"></div>

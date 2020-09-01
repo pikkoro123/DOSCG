@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FeaturesService } from '../features.service';
 
 @Component({
   selector: 'app-line-bot',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LineBotComponent implements OnInit {
 
-  constructor() { }
+  message;
+  botName = 'Pikkoro';
+  qrcodePic = '';
+  constructor(public featuresService: FeaturesService) { }
 
   ngOnInit(): void {
+    this.featuresService.getIsActiveLineBot().subscribe(resultValue => {
+      console.log(resultValue);
+      this.message = resultValue.message;
+      this.qrcodePic = resultValue.results.imagePath;
+    });
   }
 
 }

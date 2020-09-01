@@ -10,9 +10,11 @@ import { Component, OnInit } from '@angular/core';
 export class MyCvComponent implements OnInit {
   myPic = 'assets/images/itsme.JPG';
   myPicTitle = 'Pallop Bunnak';
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
 
 }
