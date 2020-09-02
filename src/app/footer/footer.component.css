@@ -6,6 +6,13 @@ footer {
   /* position:absolute; */
   /* bottom:0; */
   /* width:100%; */
-  /* height:60px;   Height of the footer */
+  height:60px;   
+  /* Height of the footer */
   background:#6cf;
+}
+
+.linkMe {
+  margin-left: 20px;
+  width: 40px;
+  height: 40px;
 }
