@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Subject } from 'rxjs';
 
 import { environment } from '../../environments/environment';
 
 const BACKEND_URL = environment.apiUrl;
-
+const LINE_BACKEND_URL = environment.apiLineUrl;
 @Injectable({
   providedIn: 'root'
 })
 export class FeaturesService {
+
+  private lineBotUpdated = new Subject<{ message: string, results: {imagePath: string}}>();
 
   constructor(private http: HttpClient) { }
 
@@ -29,10 +32,16 @@ export class FeaturesService {
 
 
   // TODO: getIsActiveLineBot
-  getIsActiveLineBot() {
-    return this.http.get<{ message: string; results: any }>(
-      'https://linebot-pikkoro.herokuapp.com'
-    );
+
+  getLineBotStatusListener() {
+    return this.lineBotUpdated.asObservable();
   }
-  // https://linebot-pikkoro.herokuapp.com/
+
+  getIsActiveLineBot() {
+    this.http.get<{ message: string; results: any }>(
+      LINE_BACKEND_URL
+    ).subscribe(results => {
+      this.lineBotUpdated.next(results);
+    });
+  }
 }

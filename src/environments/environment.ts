@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:3000/api'
+  apiUrl: 'http://localhost:3000/api',
+  apiLineUrl: 'https://linebot-pikkoro.herokuapp.com',
+  // apiLineUrl: 'http://localhost:3000/'
 };
 
 /*

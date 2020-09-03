@@ -15,7 +15,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { ParticlesModule } from 'angular-particle';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularMaterialModule } from './angular-material.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,9 @@ import { ParticlesModule } from 'angular-particle';
     ReactiveFormsModule,
     AppRoutingModule,
     GoogleMapsModule,
-    ParticlesModule
+    ParticlesModule,
+    AngularMaterialModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
